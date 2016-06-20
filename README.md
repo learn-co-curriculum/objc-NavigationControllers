@@ -26,7 +26,7 @@ The three classes serve the following functions:
 
 - `TeamMember` is a model class that represents each member of your team. It should have a name (`name`), phone number (`phoneNumber`), birth city (`birthCity`), birth state (`birthState`), favorite band (`favoriteBand`), and photo (`photo`). (*Hint*: use `UIImage` for the photo property. You can use the class method `imageNamed:` to retrieve assets in your assets catalog. We've included some images with this project Notice the blue folder `Images.xcassets` in your file navigator? That's where you can find the images.)
 - `TeamViewController` manages a view with `UIButton`s for each of your team members.
-- `TeamDetailViewController` is pushed onto the navigation stack when a button is pressed in `TeamViewController`. It displays the details for the particular team member that was tapped in the `TeamViewController`.
+- `TeamDetailViewController` is pushed onto the navigation stack when a button is pressed in `TeamViewController`. It displays the details for the particular team member that was tapped in the `TeamViewController`. `TeamDetailViewController` should have a public property of type `TeamMember` called teamMember.
 
 1. In the storyboard, set the custom class of the view controllers to the new subclasses you just created.
 2. `Control`-drag from each button on the `TeamViewController` to the `TeamDetailViewController` and select a "Show" segue. This makes it so that tapping any button performs a segue to the `TeamDetailViewController`.  
@@ -35,7 +35,7 @@ The three classes serve the following functions:
 
 
 3. In order for the segue to work as expected, you'll need to embed `TeamViewController` in a navigation controller in your storyboard. Do that!
-4. Use the `-prepareForSegue:sender:` method of `TeamViewController` to pass the tapped user forward to the detail view controller. Think about the best way to do this. The detail view controller should set all of its labels and image based on the team member that was tapped. Should you expose the `IBOutlets` of the detail view controller publicly, or is there a cleaner way? 
+4. Use the `-prepareForSegue:sender:` method of `TeamViewController` to pass the tapped user forward to the detail view controller - Do not use individual `IBAction`s for each of the buttons. Think about the best way to do this. The detail view controller should set all of its labels and image based on the team member that was tapped. You can access the detail view controller by calling the `destinationViewController` property of the segue.
 
 
 ### Hints
